@@ -14,9 +14,9 @@ namespace PercentCalculator
     {
         #region Variables
 
-        int inputPercent;
-        int inputNumber;
-        int outputNumer;
+        double inputPercent;
+        double inputNumber;
+        double outputNumer;
         String outputString;
 
         #endregion
@@ -30,17 +30,28 @@ namespace PercentCalculator
 
         private void PercentIn_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            NumWithDecimal(sender, e);
         }
 
         private void NumberIn_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            NumWithDecimal(sender, e);
         }
 
         private void OutputBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            NumWithDecimal(sender, e);
+        }
+
+        public void NumWithDecimal(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == '.'))
+            { e.Handled = true; }
+            TextBox txtDecimal = sender as TextBox;
+            if (e.KeyChar == '.' && txtDecimal.Text.Contains("."))
+            {
+                e.Handled = true;
+            }
         }
 
         #endregion
@@ -54,11 +65,11 @@ namespace PercentCalculator
         {
             if (PercentIn.Text != "" || NumberIn.Text != "") // If the input boxes aren't empty
             {
-                inputPercent = Convert.ToInt32(PercentIn.Text); // Convert the string in the percent box to an integer
-                inputPercent = int.Parse(PercentIn.Text); // Parse the integer
+                inputPercent = Convert.ToDouble(PercentIn.Text); // Convert the string in the percent box to an integer
+                inputPercent = double.Parse(PercentIn.Text); // Parse the integer
 
-                inputNumber = Convert.ToInt32(NumberIn.Text); // Convert the string in the number box to an integer
-                inputNumber = int.Parse(NumberIn.Text); // Parse the integer
+                inputNumber = Convert.ToDouble(NumberIn.Text); // Convert the string in the number box to an integer
+                inputNumber = double.Parse(NumberIn.Text); // Parse the integer
 
                 if (CalculationTypeBox.Text == "Of") // If the calculation type box is set to "Of"
                 {
@@ -70,6 +81,7 @@ namespace PercentCalculator
                     outputNumer = inputNumber - (inputPercent * inputNumber / 100); // Times the first box by the second box, divide by 100, then take that away from the seconnd box
                 }
 
+                outputNumer = Math.Round(outputNumer, 2);
                 outputString = Convert.ToString(outputNumer); // Convert the number back into a string
                 OutputBox.Text = outputString; // Display the string
             }

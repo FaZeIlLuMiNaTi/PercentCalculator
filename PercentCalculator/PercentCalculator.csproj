@@ -54,11 +54,10 @@
     <ApplicationIcon>percent-symbol-23106.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>
-    </ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>E47074A617D523E6A17DF05CCAAFBBD9E471BF54</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>

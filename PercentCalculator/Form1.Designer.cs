@@ -94,7 +94,7 @@
             this.OutputBox.Location = new System.Drawing.Point(221, 12);
             this.OutputBox.Name = "OutputBox";
             this.OutputBox.ReadOnly = true;
-            this.OutputBox.Size = new System.Drawing.Size(43, 26);
+            this.OutputBox.Size = new System.Drawing.Size(55, 26);
             this.OutputBox.TabIndex = 5;
             this.OutputBox.TabStop = false;
             this.OutputBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OutputBox_KeyPress);
@@ -104,7 +104,7 @@
             this.GoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GoButton.Location = new System.Drawing.Point(12, 45);
             this.GoButton.Name = "GoButton";
-            this.GoButton.Size = new System.Drawing.Size(252, 37);
+            this.GoButton.Size = new System.Drawing.Size(264, 37);
             this.GoButton.TabIndex = 3;
             this.GoButton.Text = "Calculate";
             this.GoButton.UseVisualStyleBackColor = true;
@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(275, 89);
+            this.ClientSize = new System.Drawing.Size(288, 89);
             this.Controls.Add(this.GoButton);
             this.Controls.Add(this.CalculationTypeBox);
             this.Controls.Add(this.EqualsLabel);
