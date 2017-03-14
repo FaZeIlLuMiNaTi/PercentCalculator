@@ -56,6 +56,7 @@
             this.PercentLabel.Size = new System.Drawing.Size(23, 20);
             this.PercentLabel.TabIndex = 1;
             this.PercentLabel.Text = "%";
+            this.PercentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CalculationTypeBox
             // 
@@ -87,6 +88,7 @@
             this.EqualsLabel.Size = new System.Drawing.Size(18, 20);
             this.EqualsLabel.TabIndex = 1;
             this.EqualsLabel.Text = "=";
+            this.EqualsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OutputBox
             // 

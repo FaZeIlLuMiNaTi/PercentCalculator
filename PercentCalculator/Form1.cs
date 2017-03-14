@@ -16,7 +16,7 @@ namespace PercentCalculator
 
         double inputPercent;
         double inputNumber;
-        double outputNumer;
+        double outputNumber;
         String outputString;
 
         #endregion
@@ -65,24 +65,21 @@ namespace PercentCalculator
         {
             if (PercentIn.Text != "" || NumberIn.Text != "") // If the input boxes aren't empty
             {
-                inputPercent = Convert.ToDouble(PercentIn.Text); // Convert the string in the percent box to an integer
-                inputPercent = double.Parse(PercentIn.Text); // Parse the integer
-
-                inputNumber = Convert.ToDouble(NumberIn.Text); // Convert the string in the number box to an integer
-                inputNumber = double.Parse(NumberIn.Text); // Parse the integer
+                inputPercent = double.Parse(PercentIn.Text); // Convert to a double
+                inputNumber = double.Parse(NumberIn.Text); // Convert to a double
 
                 if (CalculationTypeBox.Text == "Of") // If the calculation type box is set to "Of"
                 {
-                    outputNumer = inputPercent * inputNumber / 100; // Times the first box by the second box, then divide by 100
+                    outputNumber = inputPercent * inputNumber / 100; // Times the first box by the second box, then divide by 100
                 }
 
                 if (CalculationTypeBox.Text == "Off") // If the calculation type box is set to "Of"
                 {
-                    outputNumer = inputNumber - (inputPercent * inputNumber / 100); // Times the first box by the second box, divide by 100, then take that away from the seconnd box
+                    outputNumber = inputNumber - (inputPercent * inputNumber / 100); // Times the first box by the second box, divide by 100, then take that away from the seconnd box
                 }
 
-                outputNumer = Math.Round(outputNumer, 2);
-                outputString = Convert.ToString(outputNumer); // Convert the number back into a string
+                outputNumber = Math.Round(outputNumber, 2); // Round the number to two decimal places
+                outputString = Convert.ToString(outputNumber); // Convert the number back into a string
                 OutputBox.Text = outputString; // Display the string
             }
         }
