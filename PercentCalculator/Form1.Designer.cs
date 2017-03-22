@@ -43,6 +43,7 @@
             this.PercentIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PercentIn.Location = new System.Drawing.Point(12, 12);
             this.PercentIn.Name = "PercentIn";
+            this.PercentIn.ShortcutsEnabled = false;
             this.PercentIn.Size = new System.Drawing.Size(43, 26);
             this.PercentIn.TabIndex = 0;
             this.PercentIn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PercentIn_KeyPress);
@@ -75,6 +76,7 @@
             this.NumberIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NumberIn.Location = new System.Drawing.Point(148, 12);
             this.NumberIn.Name = "NumberIn";
+            this.NumberIn.ShortcutsEnabled = false;
             this.NumberIn.Size = new System.Drawing.Size(43, 26);
             this.NumberIn.TabIndex = 2;
             this.NumberIn.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumberIn_KeyPress);
@@ -99,7 +101,6 @@
             this.OutputBox.Size = new System.Drawing.Size(55, 26);
             this.OutputBox.TabIndex = 5;
             this.OutputBox.TabStop = false;
-            this.OutputBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OutputBox_KeyPress);
             // 
             // GoButton
             // 

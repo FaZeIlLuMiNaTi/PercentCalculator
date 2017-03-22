@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PercentCalculator
@@ -28,31 +21,36 @@ namespace PercentCalculator
 
         #region Allow only numbers in the textboxes
 
-        private void PercentIn_KeyPress(object sender, KeyPressEventArgs e)
+        private void PercentIn_KeyPress(object sender, KeyPressEventArgs e) // If a keypress is detected
         {
-            NumWithDecimal(sender, e);
+            NumWithDecimal(sender, e); // Call this function to check the key that was pressed
+
+            if (e.KeyChar == (char)Keys.Enter) // If the enter key is pressed
+            {
+                GoButton_Click(sender, e); // Call the GoButton_Click function
+            }
         }
 
-        private void NumberIn_KeyPress(object sender, KeyPressEventArgs e)
+        private void NumberIn_KeyPress(object sender, KeyPressEventArgs e) // If a keypress is detected
         {
-            NumWithDecimal(sender, e);
-        }
-
-        private void OutputBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            NumWithDecimal(sender, e);
+            NumWithDecimal(sender, e); // Call this function to check the key that was pressed
+            
+            if (e.KeyChar == (char)Keys.Enter) // If the enter key is pressed
+            {
+                GoButton_Click(sender, e); // Call the GoButton_Click function
+            }
         }
 
         public void NumWithDecimal(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == '.'))
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == '.')) // If the character isnt a number, or is the back key, or is the full stop
             {
-                e.Handled = true;
+                e.Handled = true; // Tell the sender that the task was hanlded
             }
             TextBox txtDecimal = sender as TextBox;
-            if (e.KeyChar == '.' && txtDecimal.Text.Contains("."))
+            if (e.KeyChar == '.' && txtDecimal.Text.Contains(".")) // If the character is a full stop and the text box contains a "."
             {
-                e.Handled = true;
+                e.Handled = true; // Tell the sender that the task was hanlded
             }
         }
 
@@ -65,11 +63,11 @@ namespace PercentCalculator
 
         private void GoButton_Click(object sender, EventArgs e) // Listen for when the GoButton is clicked
         {
-            if (PercentIn.Text != "" || NumberIn.Text != "") // If the input boxes aren't empty
-            {
-                inputPercent = double.Parse(PercentIn.Text); // Convert to a double
-                inputNumber = double.Parse(NumberIn.Text); // Convert to a double
+            bool isPercentInDouble = Double.TryParse(PercentIn.Text, out inputPercent); // Convert to a double
+            bool isNumberInDouble = Double.TryParse(NumberIn.Text, out inputNumber); // Convert to a double
 
+            if (isPercentInDouble || isNumberInDouble) // If the input boxes aren't empty using bools. Hopefully this fixes an issue that crashes the program
+            {
                 if (CalculationTypeBox.Text == "Of") // If the calculation type box is set to "Of"
                 {
                     outputNumber = inputPercent * inputNumber / 100; // Times the first box by the second box, then divide by 100
@@ -83,6 +81,10 @@ namespace PercentCalculator
                 outputNumber = Math.Round(outputNumber, 2); // Round the number to two decimal places
                 outputString = Convert.ToString(outputNumber); // Convert the number back into a string
                 OutputBox.Text = outputString; // Display the string
+            }
+            else
+            {
+                MessageBox.Show("Please enter some numbers"); // Tell the user that they should enter numbers
             }
         }
     }
